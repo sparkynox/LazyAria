@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_surface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="16dp">
+
+        <!-- Quick actions row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <include layout="@layout/menu_icon_item" android:id="@+id/menu_refresh" />
+            <include layout="@layout/menu_icon_item" android:id="@+id/menu_bookmark" />
+            <include layout="@layout/menu_icon_item" android:id="@+id/menu_share" />
+            <include layout="@layout/menu_icon_item" android:id="@+id/menu_find" />
+            <include layout="@layout/menu_icon_item" android:id="@+id/menu_print" />
+
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <!-- List items -->
+        <TextView android:id="@+id/menu_desktop_mode" style="@style/MenuListItem"
+            android:text="Desktop mode" android:drawableStart="@drawable/ic_desktop" />
+        <TextView android:id="@+id/menu_reader_mode" style="@style/MenuListItem"
+            android:text="Reader mode" android:drawableStart="@drawable/ic_reader" />
+        <TextView android:id="@+id/menu_night_mode" style="@style/MenuListItem"
+            android:text="Night mode" android:drawableStart="@drawable/ic_moon" />
+        <TextView android:id="@+id/menu_text_size" style="@style/MenuListItem"
+            android:text="Text size" android:drawableStart="@drawable/ic_text_size" />
+        <TextView android:id="@+id/menu_incognito" style="@style/MenuListItem"
+            android:text="New incognito tab" android:drawableStart="@drawable/ic_incognito" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <TextView android:id="@+id/menu_bookmarks_list" style="@style/MenuListItem"
+            android:text="Bookmarks" android:drawableStart="@drawable/ic_bookmarks" />
+        <TextView android:id="@+id/menu_history" style="@style/MenuListItem"
+            android:text="History" android:drawableStart="@drawable/ic_history" />
+        <TextView android:id="@+id/menu_downloads" style="@style/MenuListItem"
+            android:text="Downloads" android:drawableStart="@drawable/ic_download" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <TextView android:id="@+id/menu_clear_data" style="@style/MenuListItem"
+            android:text="Clear browsing data" android:drawableStart="@drawable/ic_clear" />
+        <TextView android:id="@+id/menu_settings" style="@style/MenuListItem"
+            android:text="Settings" android:drawableStart="@drawable/ic_settings" />
+
+    </LinearLayout>
+</ScrollView>

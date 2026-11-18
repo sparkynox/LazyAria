@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- General -->
+    <PreferenceCategory android:title="General">
+
+        <EditTextPreference
+            android:key="homepage"
+            android:title="Homepage"
+            android:summary="URL to load on new tabs"
+            android:defaultValue="about:home" />
+
+        <ListPreference
+            android:key="search_engine"
+            android:title="Search engine"
+            android:entries="@array/search_engine_names"
+            android:entryValues="@array/search_engine_urls"
+            android:defaultValue="https://duckduckgo.com/?q=" />
+
+        <SwitchPreferenceCompat
+            android:key="gestures"
+            android:title="Gesture navigation"
+            android:summary="Swipe down from WebView to open menu"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <!-- Display -->
+    <PreferenceCategory android:title="Display">
+
+        <SwitchPreferenceCompat
+            android:key="night_mode"
+            android:title="Night mode"
+            android:summary="Invert colors for dark browsing"
+            android:defaultValue="false" />
+
+        <SeekBarPreference
+            android:key="text_zoom"
+            android:title="Text zoom"
+            android:defaultValue="100"
+            android:max="200"
+            app:min="50" />
+
+        <SwitchPreferenceCompat
+            android:key="force_zoom"
+            android:title="Force enable zoom"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <!-- User Agent -->
+    <PreferenceCategory android:title="User Agent">
+
+        <ListPreference
+            android:key="user_agent"
+            android:title="User agent"
+            android:entries="@array/ua_names"
+            android:entryValues="@array/ua_values"
+            android:defaultValue="default" />
+
+        <SwitchPreferenceCompat
+            android:key="desktop_mode"
+            android:title="Desktop mode"
+            android:summary="Always request desktop version"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <!-- Privacy -->
+    <PreferenceCategory android:title="Privacy &amp; Security">
+
+        <SwitchPreferenceCompat
+            android:key="javascript"
+            android:title="JavaScript"
+            android:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            android:key="ad_block"
+            android:title="Ad block"
+            android:summary="Block ads using hosts list"
+            android:defaultValue="true" />
+
+        <Preference
+            android:key="blocklist_manager"
+            android:title="Block lists"
+            android:summary="Sources, rule count, force update" />
+
+        <Preference
+            android:key="redirect_rules"
+            android:title="Redirect rules"
+            android:summary="Block or allow redirect destinations" />
+
+        <SwitchPreferenceCompat
+            android:key="webrtc"
+            android:title="WebRTC"
+            android:summary="Disable to prevent IP leaks"
+            android:defaultValue="false" />
+
+        <SwitchPreferenceCompat
+            android:key="dnt"
+            android:title="Do Not Track"
+            android:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            android:key="save_cookies"
+            android:title="Accept cookies"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <!-- Reader mode -->
+    <PreferenceCategory android:title="Reader Mode">
+
+        <SeekBarPreference
+            android:key="reader_font_size"
+            android:title="Font size"
+            android:defaultValue="16"
+            android:max="32"
+            app:min="10" />
+
+        <ListPreference
+            android:key="reader_font"
+            android:title="Font family"
+            android:entries="@array/reader_font_names"
+            android:entryValues="@array/reader_font_values"
+            android:defaultValue="serif" />
+
+    </PreferenceCategory>
+
+    <!-- Downloads -->
+    <PreferenceCategory android:title="Downloads">
+
+        <Preference
+            android:key="download_path"
+            android:title="Download location"
+            android:summary="Default: Downloads folder" />
+
+    </PreferenceCategory>
+
+    <!-- DNS -->
+    <PreferenceCategory android:title="DNS">
+
+        <EditTextPreference
+            android:key="doh_url"
+            android:title="DNS over HTTPS"
+            android:summary="e.g. https://cloudflare-dns.com/dns-query"
+            android:defaultValue="" />
+
+    </PreferenceCategory>
+
+    <!-- Advanced -->
+    <PreferenceCategory android:title="Advanced">
+
+        <EditTextPreference
+            android:key="custom_css"
+            android:title="Custom CSS"
+            android:summary="Injected into every page" />
+
+        <EditTextPreference
+            android:key="custom_js"
+            android:title="Custom JavaScript"
+            android:summary="Injected after page load" />
+
+        <Preference
+            android:key="clear_all_data"
+            android:title="Clear all browsing data"
+            android:summary="Cache, cookies, history" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
