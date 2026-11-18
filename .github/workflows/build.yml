@@ -14,7 +14,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  NDK_VERSION: 26.1.10909125
+  NDK_VERSION: "26.1.10909125"
   GRADLE_VERSION: "8.6"
 
 jobs:
@@ -47,10 +47,12 @@ jobs:
           key: rust-${{ matrix.target }}-${{ hashFiles('rust-core/Cargo.lock') }}
           restore-keys: rust-${{ matrix.target }}-
 
-      - name: Setup Android SDK + NDK
-        uses: android-actions/setup-android@v3
-        with:
-          ndk-version: ${{ env.NDK_VERSION }}
+      # ubuntu-latest already has Android SDK at $ANDROID_SDK_ROOT
+      # Just install NDK via sdkmanager — no third-party action needed
+      - name: Install NDK
+        run: |
+          echo "y" | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager \
+            "ndk;$NDK_VERSION"
 
       - name: Install cargo-ndk
         run: cargo install cargo-ndk --locked
@@ -58,7 +60,7 @@ jobs:
       - name: Build .so
         working-directory: rust-core
         run: |
-          export ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/${{ env.NDK_VERSION }}
+          export ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/$NDK_VERSION
           cargo ndk -t ${{ matrix.target }} -o ../app/src/main/jniLibs build --release
 
       - name: Upload .so
@@ -82,10 +84,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
-      # Bootstrap the Gradle wrapper — no jar committed to repo
+      # Bootstrap Gradle wrapper — no jar in repo
       - name: Bootstrap Gradle wrapper
         run: |
           curl -fsSL "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
